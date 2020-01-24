@@ -3,11 +3,47 @@ Package sc;
 Helpers
 
 lettre = [['a' .. 'z'] + ['A' .. 'Z']];
+chiffre = ['0' .. '9'];
+alpha = [lettre + ['_' + '$']];
+alphanum = [lettre + chiffre];
 
 Tokens
 
 espaces = (' ' | 13 | 10)+;
 commentaire= '#' [[0 .. 0xffff] - [10 + 13]]* (10 | 13 | 10 13);
+
+plus = '+';
+moins = '-';
+fois = '*';
+diviser = '/';
+pvirgule = ';';
+virgule = ',';
+paro = '(';
+parf = ')';
+acco = '{';
+accf = '}';
+croo = '[';
+crof = ']';
+inf = '<';
+sup = '>';
+egal = '=';
+non = '!';
+et = '&';
+ou = '|';
+
+nombre = chiffre+;
+
+si = 'si';
+sinon = 'sinon';
+tantque = 'tantque';
+alors = 'alors';
+faire = 'faire';
+retour = 'retour';
+entier = 'entier';
+lire = 'lire';
+ecrire = 'ecrire';
+
+id = lettre + [lettre + chiffre]+;
 
 Ignored Tokens
 
@@ -15,5 +51,67 @@ espaces, commentaire;
 
 Productions
 
-programme = optdecvar listedecfonc ;
+var = {liste_var} id croo exp1 crof | {var} id;
+
+exp1 = {ou} exp2 ou exp1 | {exp2} exp2;
+exp2 = {et} exp3 et exp2 | {exp3} exp3;
+exp3 = {egal} exp4 egal exp3 | {inf} exp4 inf exp3 | {exp4} exp4;
+exp4 = {plus} exp5 plus exp4 | {moins} exp5 moins exp4 | {exp5} exp5;
+exp5 = {fois} exp6 fois exp5 | {diviser} exp6 diviser exp5 | {exp6} exp6;
+exp6 = {non} non exp7 | {exp7} exp7;
+exp7 = {nombre} nombre | {var} var | {parantheses} paro exp1 parf | {appelfonction} appelfonction | {lire} lire paro parf;
+
+appelfonction = {avecparam} id paro liste_exp parf | {sansparam} id paro parf;
+
+liste_exp = {recursif} exp1 liste_exp_bis | {final} exp1;
+liste_exp_bis = {final} virgule exp1 | {recursif} virgule exp1 liste_exp_bis;
+
+
+
+instruction =
+{instraffect} instraffect |
+{instrbloc } instrbloc |
+{instrsi } instrsi |
+{instrtantque } instrtantque |
+{instrappel } instrappel |
+{instrretour } instrretour |
+{instrecriture } instrecriture |
+{instrvide} instrvide ;
+
+instraffect = var egal exp1 pvirgule ;
+
+instrbloc = acco listeinst accf ;
+
+listeinst =
+{linstrec} instruction listeinst |
+{linstfinal} ;
+
+instrsi =
+{avecsinon} si exp1 alors ibloc instrsinon|
+{sanssinon} si exp1 alors ibloc ;
+
+instrsinon = sinon ibloc ;
+
+instrtantque = tantque exp1 faire ibloc ;
+
+instrappel = appelfonction pvirgule ;
+
+instrretour = retour exp1 pvirgule ;
+
+instrecriture = ecrire paro exp1 parf pvirgule ;
+
+instrvide = pvirgule ;
+
+
+ibloc = {ibloc} acco instruction accf;
+
+decvar = {decvar} entier id | {listedecvar} entier id croo nombre crof;
+listedecvarbis = {listedecvarbis} virgule decvar listedecvarbis;
+listedecvar = {listedecvar} decvar listedecvarbis;
+listedecvaropt = {listedecvaropt} listedecvar pvirgule;
+
+decfonc = {decfonc} id paro listedecvar parf listedecvaropt ibloc;
+listedecfonc = {listedecfonc} decfonc listedecfonc;
+
+programme = {programme} listedecvaropt listedecfonc;
 
