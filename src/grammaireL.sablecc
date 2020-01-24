@@ -16,16 +16,16 @@ plus = '+';
 moins = '-';
 fois = '*';
 diviser = '/';
-pvirgule = ';';
+point_virgule = ';';
 virgule = ',';
-paro = '(';
-parf = ')';
-acco = '{';
-accf = '}';
-croo = '[';
-crof = ']';
-inf = '<';
-sup = '>';
+paranthese_ouvrante = '(';
+paranthese_fermante = ')';
+accolade_ouvrante = '{';
+accolade_fermante = '}';
+crochet_ouvrant = '[';
+crochet_fermant = ']';
+inferieur = '<';
+superieur = '>';
 egal = '=';
 non = '!';
 et = '&';
@@ -43,7 +43,7 @@ entier = 'entier';
 lire = 'lire';
 ecrire = 'ecrire';
 
-id = lettre + [lettre + chiffre]+;
+identifiant = lettre + [lettre + chiffre]+;
 
 Ignored Tokens
 
@@ -51,66 +51,43 @@ espaces, commentaire;
 
 Productions
 
-var = {liste_var} id croo exp1 crof | {var} id;
+// Variable
+var = {liste_var} identifiant crochet_ouvrant expression crochet_fermant | {var} identifiant;
 
-exp1 = {ou} exp2 ou exp1 | {exp2} exp2;
+// Expression
+expression = {ou} exp2 ou expression | {exp2} exp2;
 exp2 = {et} exp3 et exp2 | {exp3} exp3;
-exp3 = {egal} exp4 egal exp3 | {inf} exp4 inf exp3 | {exp4} exp4;
+exp3 = {egal} exp4 egal exp3 | {inferieur} exp4 inferieur exp3 | {exp4} exp4;
 exp4 = {plus} exp5 plus exp4 | {moins} exp5 moins exp4 | {exp5} exp5;
 exp5 = {fois} exp6 fois exp5 | {diviser} exp6 diviser exp5 | {exp6} exp6;
 exp6 = {non} non exp7 | {exp7} exp7;
-exp7 = {nombre} nombre | {var} var | {parantheses} paro exp1 parf | {appelfonction} appelfonction | {lire} lire paro parf;
+exp7 = {nombre} nombre | {var} var | {parantheses} paranthese_ouvrante expression paranthese_fermante | {appelfonction} appelfonction | {lire} lire paranthese_ouvrante paranthese_fermante;
 
-appelfonction = {avecparam} id paro liste_exp parf | {sansparam} id paro parf;
+liste_exp = {recursif} expression liste_exp_bis | {final} expression;
+liste_exp_bis = {final} virgule expression | {recursif} virgule expression liste_exp_bis;
 
-liste_exp = {recursif} exp1 liste_exp_bis | {final} exp1;
-liste_exp_bis = {final} virgule exp1 | {recursif} virgule exp1 liste_exp_bis;
+// Instruction
+instruction = {instruction_affectation} instruction_affectation | {instruction_bloc} instruction_bloc | {instruction_si} instruction_si | {instruction_tantque} instruction_tantque | {instruction_rappel} instruction_rappel | {instruction_retour} instruction_retour | {instruction_ecrire} instruction_ecrire | {instruction_vide} instruction_vide ;
+liste_instruction = {liste_instruction} instruction liste_instruction | {liste_finale};
+instruction_affectation = var egal expression point_virgule;
+instruction_bloc = {instruction_bloc} accolade_ouvrante liste_instruction accolade_fermante;
+instruction_si = {avecsinon} si expression alors instruction_bloc instruction_sinon | {sanssinon} si expression alors instruction_bloc;
+instruction_sinon = sinon instruction_bloc;
+instruction_tantque = tantque expression faire instruction_bloc;
+instruction_rappel = appelfonction point_virgule;
+instruction_retour = retour expression point_virgule;
+instruction_ecrire = ecrire paranthese_ouvrante expression paranthese_fermante point_virgule;
+instruction_vide = point_virgule;
 
-
-
-instruction =
-{instraffect} instraffect |
-{instrbloc } instrbloc |
-{instrsi } instrsi |
-{instrtantque } instrtantque |
-{instrappel } instrappel |
-{instrretour } instrretour |
-{instrecriture } instrecriture |
-{instrvide} instrvide ;
-
-instraffect = var egal exp1 pvirgule ;
-
-instrbloc = acco listeinst accf ;
-
-listeinst =
-{linstrec} instruction listeinst |
-{linstfinal} ;
-
-instrsi =
-{avecsinon} si exp1 alors ibloc instrsinon|
-{sanssinon} si exp1 alors ibloc ;
-
-instrsinon = sinon ibloc ;
-
-instrtantque = tantque exp1 faire ibloc ;
-
-instrappel = appelfonction pvirgule ;
-
-instrretour = retour exp1 pvirgule ;
-
-instrecriture = ecrire paro exp1 parf pvirgule ;
-
-instrvide = pvirgule ;
-
-
-ibloc = {ibloc} acco instruction accf;
-
-decvar = {decvar} entier id | {listedecvar} entier id croo nombre crof;
+// Variable
+decvar = {decvar} entier identifiant | {listedecvar} entier identifiant crochet_ouvrant nombre crochet_fermant;
 listedecvarbis = {listedecvarbis} virgule decvar listedecvarbis;
 listedecvar = {listedecvar} decvar listedecvarbis;
-listedecvaropt = {listedecvaropt} listedecvar pvirgule;
+listedecvaropt = {listedecvaropt} listedecvar point_virgule;
 
-decfonc = {decfonc} id paro listedecvar parf listedecvaropt ibloc;
+// Fonction
+appelfonction = {avecparam} identifiant paranthese_ouvrante liste_exp paranthese_fermante | {sansparam} identifiant paranthese_ouvrante paranthese_fermante;
+decfonc = {decfonc} identifiant paranthese_ouvrante listedecvar paranthese_fermante listedecvaropt instruction_bloc;
 listedecfonc = {listedecfonc} decfonc listedecfonc;
 
 programme = {programme} listedecvaropt listedecfonc;
