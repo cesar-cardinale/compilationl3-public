@@ -51,6 +51,8 @@ espaces, commentaire;
 
 Productions
 
+programme = {programme} listedecvaropt listedecfonc;
+
 // Variable
 var = {liste_var} identifiant crochet_ouvrant expression crochet_fermant | {var} identifiant;
 
@@ -81,14 +83,14 @@ instruction_vide = point_virgule;
 
 // Variable
 decvar = {decvar} entier identifiant | {listedecvar} entier identifiant crochet_ouvrant nombre crochet_fermant;
-listedecvarbis = {listedecvarbis} virgule decvar listedecvarbis;
-listedecvar = {listedecvar} decvar listedecvarbis;
-listedecvaropt = {listedecvaropt} listedecvar point_virgule;
+listedecvar = {listedecvar} decvar listedecvarbis | {listedecvar_fin};
+listedecvarbis = {listedecvarbis} virgule decvar listedecvarbis | {listedecvarbis_fin};
+listedecvaropt = {listedecvaropt} listedecvar point_virgule | {listedecvaropt_fin};
 
 // Fonction
 appelfonction = {avecparam} identifiant paranthese_ouvrante liste_exp paranthese_fermante | {sansparam} identifiant paranthese_ouvrante paranthese_fermante;
 decfonc = {decfonc} identifiant paranthese_ouvrante listedecvar paranthese_fermante listedecvaropt instruction_bloc;
-listedecfonc = {listedecfonc} decfonc listedecfonc;
+listedecfonc = {listedecfonc} decfonc listedecfonc | {listedecfonc_fin};
 
-programme = {programme} listedecvaropt listedecfonc;
+
 
