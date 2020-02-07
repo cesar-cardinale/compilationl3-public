@@ -4,6 +4,11 @@ package sc.lexer;
 
 import sc.node.*;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PushbackReader;
+
 @SuppressWarnings("nls")
 public class Lexer
 {

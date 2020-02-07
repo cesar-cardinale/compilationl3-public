@@ -2,9 +2,11 @@
 
 package sc.lexer;
 
+import java.io.IOException;
+
 @SuppressWarnings("serial")
 public interface IPushbackReader
 {
-    public int read() throws IOException;
+    public int read() throws IOException, IOException;
     public void unread(int c) throws IOException;
 }

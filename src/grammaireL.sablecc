@@ -43,7 +43,7 @@ entier = 'entier';
 lire = 'lire';
 ecrire = 'ecrire';
 
-identifiant = lettre + [lettre + chiffre]+;
+identifiant = lettre [lettre + chiffre]*;
 
 Ignored Tokens
 
