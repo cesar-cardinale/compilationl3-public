@@ -41,118 +41,168 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAVarVar(AVarVar node) {
-        String var = apply(node.getIdentifiant()).toString();
-        this.returnValue = new SaVarSimple(var);
+        SaVar var = (SaVar) apply(node.getIdentifiant());
+        this.returnValue = new SaExpVar(var);
     }
 
     @Override
     public void caseAOuExpression(AOuExpression node) {
-        super.caseAOuExpression(node);
+        SaExp exp = (SaExp) apply(node.getExpression());
+        SaExp exp2 = (SaExp) apply(node.getExp2());
+
+        this.returnValue = new SaExpOr(exp,exp2);
     }
 
     @Override
     public void caseAExp2Expression(AExp2Expression node) {
-        super.caseAExp2Expression(node);
+        SaExp exp2 = (SaExp) apply(node.getExp2());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseAEtExp2(AEtExp2 node) {
-        super.caseAEtExp2(node);
+        SaExp exp2 = (SaExp) apply(node.getExp2());
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+
+        this.returnValue = new SaExpAnd(exp2,exp3);
     }
 
     @Override
     public void caseAExp3Exp2(AExp3Exp2 node) {
-        super.caseAExp3Exp2(node);
+        SaExp exp2 = (SaExp) apply(node.getExp3());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseAEgalExp3(AEgalExp3 node) {
-        super.caseAEgalExp3(node);
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+
+        this.returnValue = new SaExpEqual(exp3,exp4);
     }
 
     @Override
     public void caseAInferieurExp3(AInferieurExp3 node) {
-        super.caseAInferieurExp3(node);
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+
+        this.returnValue = new SaExpInf(exp3,exp4);
     }
 
     @Override
     public void caseAExp4Exp3(AExp4Exp3 node) {
-        super.caseAExp4Exp3(node);
+        SaExp exp2 = (SaExp) apply(node.getExp4());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseAPlusExp4(APlusExp4 node) {
-        super.caseAPlusExp4(node);
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+
+        this.returnValue = new SaExpAdd(exp4,exp5);
     }
 
     @Override
     public void caseAMoinsExp4(AMoinsExp4 node) {
-        super.caseAMoinsExp4(node);
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+
+        this.returnValue = new SaExpSub(exp4,exp5);
     }
 
     @Override
     public void caseAExp5Exp4(AExp5Exp4 node) {
-        super.caseAExp5Exp4(node);
+        SaExp exp2 = (SaExp) apply(node.getExp5());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseAFoisExp5(AFoisExp5 node) {
-        super.caseAFoisExp5(node);
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp6 = (SaExp) apply(node.getExp6());
+
+        this.returnValue = new SaExpMult(exp5,exp6);
     }
 
     @Override
     public void caseADiviserExp5(ADiviserExp5 node) {
-        super.caseADiviserExp5(node);
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp6 = (SaExp) apply(node.getExp6());
+
+        this.returnValue = new SaExpDiv(exp5,exp6);
     }
 
     @Override
     public void caseAExp6Exp5(AExp6Exp5 node) {
-        super.caseAExp6Exp5(node);
+        SaExp exp2 = (SaExp) apply(node.getExp6());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseANonExp6(ANonExp6 node) {
-        super.caseANonExp6(node);
+        SaExp exp7 = (SaExp) apply(node.getExp7());
+
+        this.returnValue = new SaExpNot(exp7);
     }
 
     @Override
     public void caseAExp7Exp6(AExp7Exp6 node) {
-        super.caseAExp7Exp6(node);
+        SaExp exp2 = (SaExp) apply(node.getExp7());
+        this.returnValue = new SaLExp(exp2,null);
     }
 
     @Override
     public void caseANombreExp7(ANombreExp7 node) {
-        super.caseANombreExp7(node);
+        this.returnValue = new SaExpInt(Integer.parseInt(node.getNombre().getText()));
     }
 
     @Override
     public void caseAVarExp7(AVarExp7 node) {
-        super.caseAVarExp7(node);
+        SaVar var = (SaVar) apply(node.getVar());
+        this.returnValue = new SaExpVar(var);
     }
 
     @Override
     public void caseAParanthesesExp7(AParanthesesExp7 node) {
-        super.caseAParanthesesExp7(node);
+        SaLExp parenthese_fermant = (SaLExp) apply(node.getParantheseFermante());
+        SaExp exp = (SaExp) apply(node.getExpression());
+        SaExp parenthese_ouvrant = (SaExp) apply(node.getParantheseOuvrante());
+
+        SaLExp saLExp1 = new SaLExp(exp,parenthese_fermant);
+
+        this.returnValue = new SaLExp(parenthese_ouvrant,saLExp1);
     }
 
     @Override
     public void caseAAppelfonctionExp7(AAppelfonctionExp7 node) {
-        super.caseAAppelfonctionExp7(node);
+        SaAppel appel = (SaAppel) apply(node.getAppelfonction());
+        this.returnValue = new SaExpAppel(appel);
     }
 
     @Override
     public void caseALireExp7(ALireExp7 node) {
-        super.caseALireExp7(node);
+        SaLExp parenthese_fermant = (SaLExp) apply(node.getParantheseFermante());
+        SaExp parenthese_ouvrant = (SaExp) apply(node.getParantheseOuvrante());
+        SaExpLire lire = (SaExpLire) apply(node.getLire());
+
+        SaLExp saLExp1 = new SaLExp(parenthese_ouvrant,parenthese_fermant);
+
+        this.returnValue = new SaLExp(lire,saLExp1);
     }
 
     @Override
     public void caseARecursifListeExp(ARecursifListeExp node) {
-        super.caseARecursifListeExp(node);
+        SaLExp liste_exp_bis = (SaLExp) apply(node.getListeExpBis());
+        SaExp exp = (SaExp) apply(node.getExpression());
+
+        this.returnValue = new SaLExp(exp,liste_exp_bis);
     }
 
     @Override
     public void caseAFinalListeExp(AFinalListeExp node) {
-        super.caseAFinalListeExp(node);
+        SaExp exp = (SaExp) apply(node.getExpression());
+        this.returnValue = new SaLExp(exp,null);
     }
 
     @Override
