@@ -2,12 +2,13 @@
 
 package sc.parser;
 
-import sc.analysis.*;
 import sc.lexer.*;
 import sc.node.*;
+import sc.analysis.*;
+import java.util.*;
 
-import java.io.BufferedInputStream;
 import java.io.DataInputStream;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 
 @SuppressWarnings("nls")

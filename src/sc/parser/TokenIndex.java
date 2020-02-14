@@ -2,8 +2,8 @@
 
 package sc.parser;
 
-import sc.analysis.*;
 import sc.node.*;
+import sc.analysis.*;
 
 class TokenIndex extends AnalysisAdapter
 {

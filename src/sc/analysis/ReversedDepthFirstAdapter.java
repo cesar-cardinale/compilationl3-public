@@ -2,6 +2,7 @@
 
 package sc.analysis;
 
+import java.util.*;
 import sc.node.*;
 
 public class ReversedDepthFirstAdapter extends AnalysisAdapter

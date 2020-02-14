@@ -2,6 +2,8 @@
 
 package sc.node;
 
+import java.util.*;
+
 @SuppressWarnings("nls")
 public abstract class Node implements Switchable, Cloneable
 {
