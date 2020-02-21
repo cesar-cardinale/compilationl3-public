@@ -28,7 +28,7 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAListeVarVar(AListeVarVar node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
         SaExp exp = (SaExp) apply(node.getExpression());
 
         this.returnValue = new SaVarIndicee(nom,exp);
@@ -36,102 +36,102 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAVarVar(AVarVar node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
         this.returnValue = new SaVarSimple(nom);
     }
 
     @Override
     public void caseAOuExpression(AOuExpression node) {
-        SaExp exp = (SaExp) apply(node.getExpression());
         SaExp exp2 = (SaExp) apply(node.getExp2());
+        SaExp exp = (SaExp) apply(node.getExpression());
 
-        this.returnValue = new SaExpOr(exp,exp2);
+        this.returnValue = new SaExpOr(exp2,exp);
     }
 
     @Override
     public void caseAExp2Expression(AExp2Expression node) {
         SaExp exp2 = (SaExp) apply(node.getExp2());
-        this.returnValue = new SaLExp(exp2,null);
+        this.returnValue = exp2;
     }
 
     @Override
     public void caseAEtExp2(AEtExp2 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp2());
         SaExp exp3 = (SaExp) apply(node.getExp3());
+        SaExp exp2 = (SaExp) apply(node.getExp2());
 
-        this.returnValue = new SaExpAnd(exp2,exp3);
+        this.returnValue = new SaExpAnd(exp3,exp2);
     }
 
     @Override
     public void caseAExp3Exp2(AExp3Exp2 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp3());
-        this.returnValue = new SaLExp(exp2,null);
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+        this.returnValue = exp3;
     }
 
     @Override
     public void caseAEgalExp3(AEgalExp3 node) {
-        SaExp exp3 = (SaExp) apply(node.getExp3());
         SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp3 = (SaExp) apply(node.getExp3());
 
-        this.returnValue = new SaExpEqual(exp3,exp4);
+        this.returnValue = new SaExpEqual(exp4,exp3);
     }
 
     @Override
     public void caseAInferieurExp3(AInferieurExp3 node) {
-        SaExp exp3 = (SaExp) apply(node.getExp3());
         SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp3 = (SaExp) apply(node.getExp3());
 
-        this.returnValue = new SaExpInf(exp3,exp4);
+        this.returnValue = new SaExpInf(exp4,exp3);
     }
 
     @Override
     public void caseAExp4Exp3(AExp4Exp3 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp4());
-        this.returnValue = new SaLExp(exp2,null);
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+        this.returnValue = exp4;
     }
 
     @Override
     public void caseAPlusExp4(APlusExp4 node) {
-        SaExp exp4 = (SaExp) apply(node.getExp4());
         SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
 
-        this.returnValue = new SaExpAdd(exp4,exp5);
+        this.returnValue = new SaExpAdd(exp5,exp4);
     }
 
     @Override
     public void caseAMoinsExp4(AMoinsExp4 node) {
-        SaExp exp4 = (SaExp) apply(node.getExp4());
         SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
 
-        this.returnValue = new SaExpSub(exp4,exp5);
+        this.returnValue = new SaExpSub(exp5,exp4);
     }
 
     @Override
     public void caseAExp5Exp4(AExp5Exp4 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp5());
-        this.returnValue = new SaLExp(exp2,null);
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+        this.returnValue = exp5;
     }
 
     @Override
     public void caseAFoisExp5(AFoisExp5 node) {
-        SaExp exp5 = (SaExp) apply(node.getExp5());
         SaExp exp6 = (SaExp) apply(node.getExp6());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
 
-        this.returnValue = new SaExpMult(exp5,exp6);
+        this.returnValue = new SaExpMult(exp6,exp5);
     }
 
     @Override
     public void caseADiviserExp5(ADiviserExp5 node) {
-        SaExp exp5 = (SaExp) apply(node.getExp5());
         SaExp exp6 = (SaExp) apply(node.getExp6());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
 
-        this.returnValue = new SaExpDiv(exp5,exp6);
+        this.returnValue = new SaExpDiv(exp6,exp5);
     }
 
     @Override
     public void caseAExp6Exp5(AExp6Exp5 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp6());
-        this.returnValue = new SaLExp(exp2,null);
+        SaExp exp6 = (SaExp) apply(node.getExp6());
+        this.returnValue = exp6;
     }
 
     @Override
@@ -143,8 +143,8 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAExp7Exp6(AExp7Exp6 node) {
-        SaExp exp2 = (SaExp) apply(node.getExp7());
-        this.returnValue = new SaLExp(exp2,null);
+        SaExp exp7 = (SaExp) apply(node.getExp7());
+        this.returnValue = exp7;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class Sc2sa extends DepthFirstAdapter {
     @Override
     public void caseAParanthesesExp7(AParanthesesExp7 node) {
         SaExp exp = (SaExp) apply(node.getExpression());
-        this.returnValue = new SaLExp(exp,null);
+        this.returnValue = exp;
     }
 
     @Override
@@ -287,30 +287,29 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAAvecsinonInstructionSi(AAvecsinonInstructionSi node) {
-        SaExp exp = (SaExp) apply(node.getInstructionBloc());
-        SaInst alors = (SaInst) apply(node.getAlors());
-        SaInst si = (SaInst) apply(node.getSi());
-        this.returnValue = new SaInstSi(exp, alors, si);
+        SaExp exp = (SaExp) apply(node.getExpression());
+        SaInst si = (SaInst) apply(node.getInstructionBloc());
+        SaInst sinon = (SaInst) apply(node.getInstructionSinon());
+        this.returnValue = new SaInstSi(exp, si, sinon);
     }
 
     @Override
     public void caseASanssinonInstructionSi(ASanssinonInstructionSi node) {
-        SaExp exp = (SaExp) apply(node.getInstructionBloc());
-        SaInst alors = (SaInst) apply(node.getAlors());
-        this.returnValue = new SaInstSi(exp, alors, null);
+        SaExp exp = (SaExp) apply(node.getExpression());
+        SaInst si = (SaInst) apply(node.getInstructionBloc());
+        this.returnValue = new SaInstSi(exp, si, null);
     }
 
     @Override
     public void caseAInstructionSinon(AInstructionSinon node) {
-        SaExp exp = (SaExp) apply(node.getInstructionBloc());
-        SaInst sinon = (SaInst) apply(node.getSinon());
-        this.returnValue = new SaInstSi(exp, null, sinon);
+        SaInstBloc instBloc = (SaInstBloc) apply(node.getInstructionBloc());
+        this.returnValue = instBloc;
     }
 
     @Override
     public void caseAInstructionTantque(AInstructionTantque node) {
         SaExp exp = (SaExp) apply(node.getExpression());
-        SaInst inst = (SaInst) apply(node.getFaire());
+        SaInst inst = (SaInst) apply(node.getInstructionBloc());
         this.returnValue = new SaInstTantQue(exp, inst);
     }
 
@@ -339,22 +338,21 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseADecvarDecvar(ADecvarDecvar node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
         this.returnValue = new SaDecVar(nom);
     }
 
     @Override
     public void caseAListedecvarDecvar(AListedecvarDecvar node) {
-        String nom = apply(node.getIdentifiant()).toString();
-        int taille = Integer.parseInt(apply(node.getNombre()).toString());
+        String nom = node.getIdentifiant().getText();
+        int taille = Integer.parseInt(node.getNombre().getText());
         this.returnValue = new SaDecTab(nom,taille);
     }
 
     @Override
     public void caseAListedecvarListedecvar(AListedecvarListedecvar node) {
+        SaDec dec_var = (SaDec) apply(node.getDecvar());
         SaLDec liste_dec_var_bis = (SaLDec) apply(node.getListedecvarbis());
-
-        SaDecVar dec_var = (SaDecVar) apply(node.getDecvar());
 
         this.returnValue = new SaLDec(dec_var, liste_dec_var_bis);
     }
@@ -390,7 +388,7 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAAvecparamAppelfonction(AAvecparamAppelfonction node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
 
         SaLExp liste_exp = (SaLExp) apply(node.getListeExp());
 
@@ -399,14 +397,14 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseASansparamAppelfonction(ASansparamAppelfonction node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
 
         this.returnValue = new SaAppel(nom, null);
     }
 
     @Override
     public void caseADecfoncDecfonc(ADecfoncDecfonc node) {
-        String nom = apply(node.getIdentifiant()).toString();
+        String nom = node.getIdentifiant().getText();
 
         SaLDec liste_dec_var = (SaLDec) apply(node.getListedecvar());
         SaLDec liste_dec_var_opt = (SaLDec) apply(node.getListedecvaropt());
