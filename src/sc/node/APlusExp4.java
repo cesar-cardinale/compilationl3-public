@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class APlusExp4 extends PExp4
 {
-    private PExp5 _exp5_;
-    private TPlus _plus_;
     private PExp4 _exp4_;
+    private TPlus _plus_;
+    private PExp5 _exp5_;
 
     public APlusExp4()
     {
@@ -17,16 +17,16 @@ public final class APlusExp4 extends PExp4
     }
 
     public APlusExp4(
-        @SuppressWarnings("hiding") PExp5 _exp5_,
+        @SuppressWarnings("hiding") PExp4 _exp4_,
         @SuppressWarnings("hiding") TPlus _plus_,
-        @SuppressWarnings("hiding") PExp4 _exp4_)
+        @SuppressWarnings("hiding") PExp5 _exp5_)
     {
         // Constructor
-        setExp5(_exp5_);
+        setExp4(_exp4_);
 
         setPlus(_plus_);
 
-        setExp4(_exp4_);
+        setExp5(_exp5_);
 
     }
 
@@ -34,65 +34,15 @@ public final class APlusExp4 extends PExp4
     public Object clone()
     {
         return new APlusExp4(
-            cloneNode(this._exp5_),
+            cloneNode(this._exp4_),
             cloneNode(this._plus_),
-            cloneNode(this._exp4_));
+            cloneNode(this._exp5_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAPlusExp4(this);
-    }
-
-    public PExp5 getExp5()
-    {
-        return this._exp5_;
-    }
-
-    public void setExp5(PExp5 node)
-    {
-        if(this._exp5_ != null)
-        {
-            this._exp5_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp5_ = node;
-    }
-
-    public TPlus getPlus()
-    {
-        return this._plus_;
-    }
-
-    public void setPlus(TPlus node)
-    {
-        if(this._plus_ != null)
-        {
-            this._plus_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._plus_ = node;
     }
 
     public PExp4 getExp4()
@@ -120,22 +70,72 @@ public final class APlusExp4 extends PExp4
         this._exp4_ = node;
     }
 
+    public TPlus getPlus()
+    {
+        return this._plus_;
+    }
+
+    public void setPlus(TPlus node)
+    {
+        if(this._plus_ != null)
+        {
+            this._plus_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._plus_ = node;
+    }
+
+    public PExp5 getExp5()
+    {
+        return this._exp5_;
+    }
+
+    public void setExp5(PExp5 node)
+    {
+        if(this._exp5_ != null)
+        {
+            this._exp5_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp5_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp5_)
+            + toString(this._exp4_)
             + toString(this._plus_)
-            + toString(this._exp4_);
+            + toString(this._exp5_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp5_ == child)
+        if(this._exp4_ == child)
         {
-            this._exp5_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class APlusExp4 extends PExp4
             return;
         }
 
-        if(this._exp4_ == child)
+        if(this._exp5_ == child)
         {
-            this._exp4_ = null;
+            this._exp5_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class APlusExp4 extends PExp4
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp5_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExp5((PExp5) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class APlusExp4 extends PExp4
             return;
         }
 
-        if(this._exp4_ == oldChild)
+        if(this._exp5_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExp5((PExp5) newChild);
             return;
         }
 

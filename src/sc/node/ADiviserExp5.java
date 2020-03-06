@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class ADiviserExp5 extends PExp5
 {
-    private PExp6 _exp6_;
-    private TDiviser _diviser_;
     private PExp5 _exp5_;
+    private TDiviser _diviser_;
+    private PExp6 _exp6_;
 
     public ADiviserExp5()
     {
@@ -17,16 +17,16 @@ public final class ADiviserExp5 extends PExp5
     }
 
     public ADiviserExp5(
-        @SuppressWarnings("hiding") PExp6 _exp6_,
+        @SuppressWarnings("hiding") PExp5 _exp5_,
         @SuppressWarnings("hiding") TDiviser _diviser_,
-        @SuppressWarnings("hiding") PExp5 _exp5_)
+        @SuppressWarnings("hiding") PExp6 _exp6_)
     {
         // Constructor
-        setExp6(_exp6_);
+        setExp5(_exp5_);
 
         setDiviser(_diviser_);
 
-        setExp5(_exp5_);
+        setExp6(_exp6_);
 
     }
 
@@ -34,65 +34,15 @@ public final class ADiviserExp5 extends PExp5
     public Object clone()
     {
         return new ADiviserExp5(
-            cloneNode(this._exp6_),
+            cloneNode(this._exp5_),
             cloneNode(this._diviser_),
-            cloneNode(this._exp5_));
+            cloneNode(this._exp6_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseADiviserExp5(this);
-    }
-
-    public PExp6 getExp6()
-    {
-        return this._exp6_;
-    }
-
-    public void setExp6(PExp6 node)
-    {
-        if(this._exp6_ != null)
-        {
-            this._exp6_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp6_ = node;
-    }
-
-    public TDiviser getDiviser()
-    {
-        return this._diviser_;
-    }
-
-    public void setDiviser(TDiviser node)
-    {
-        if(this._diviser_ != null)
-        {
-            this._diviser_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._diviser_ = node;
     }
 
     public PExp5 getExp5()
@@ -120,22 +70,72 @@ public final class ADiviserExp5 extends PExp5
         this._exp5_ = node;
     }
 
+    public TDiviser getDiviser()
+    {
+        return this._diviser_;
+    }
+
+    public void setDiviser(TDiviser node)
+    {
+        if(this._diviser_ != null)
+        {
+            this._diviser_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._diviser_ = node;
+    }
+
+    public PExp6 getExp6()
+    {
+        return this._exp6_;
+    }
+
+    public void setExp6(PExp6 node)
+    {
+        if(this._exp6_ != null)
+        {
+            this._exp6_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp6_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp6_)
+            + toString(this._exp5_)
             + toString(this._diviser_)
-            + toString(this._exp5_);
+            + toString(this._exp6_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp6_ == child)
+        if(this._exp5_ == child)
         {
-            this._exp6_ = null;
+            this._exp5_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class ADiviserExp5 extends PExp5
             return;
         }
 
-        if(this._exp5_ == child)
+        if(this._exp6_ == child)
         {
-            this._exp5_ = null;
+            this._exp6_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class ADiviserExp5 extends PExp5
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp6_ == oldChild)
+        if(this._exp5_ == oldChild)
         {
-            setExp6((PExp6) newChild);
+            setExp5((PExp5) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class ADiviserExp5 extends PExp5
             return;
         }
 
-        if(this._exp5_ == oldChild)
+        if(this._exp6_ == oldChild)
         {
-            setExp5((PExp5) newChild);
+            setExp6((PExp6) newChild);
             return;
         }
 

@@ -646,14 +646,14 @@ public class Parser
         PExpression pexpressionNode1;
         {
             // Block
-        PExp2 pexp2Node2;
+        PExpression pexpressionNode2;
         TOu touNode3;
-        PExpression pexpressionNode4;
-        pexp2Node2 = (PExp2)nodeArrayList1.get(0);
+        PExp2 pexp2Node4;
+        pexpressionNode2 = (PExpression)nodeArrayList1.get(0);
         touNode3 = (TOu)nodeArrayList2.get(0);
-        pexpressionNode4 = (PExpression)nodeArrayList3.get(0);
+        pexp2Node4 = (PExp2)nodeArrayList3.get(0);
 
-        pexpressionNode1 = new AOuExpression(pexp2Node2, touNode3, pexpressionNode4);
+        pexpressionNode1 = new AOuExpression(pexpressionNode2, touNode3, pexp2Node4);
         }
 	nodeList.add(pexpressionNode1);
         return nodeList;
@@ -692,14 +692,14 @@ public class Parser
         PExp2 pexp2Node1;
         {
             // Block
-        PExp3 pexp3Node2;
+        PExp2 pexp2Node2;
         TEt tetNode3;
-        PExp2 pexp2Node4;
-        pexp3Node2 = (PExp3)nodeArrayList1.get(0);
+        PExp3 pexp3Node4;
+        pexp2Node2 = (PExp2)nodeArrayList1.get(0);
         tetNode3 = (TEt)nodeArrayList2.get(0);
-        pexp2Node4 = (PExp2)nodeArrayList3.get(0);
+        pexp3Node4 = (PExp3)nodeArrayList3.get(0);
 
-        pexp2Node1 = new AEtExp2(pexp3Node2, tetNode3, pexp2Node4);
+        pexp2Node1 = new AEtExp2(pexp2Node2, tetNode3, pexp3Node4);
         }
 	nodeList.add(pexp2Node1);
         return nodeList;
@@ -738,14 +738,14 @@ public class Parser
         PExp3 pexp3Node1;
         {
             // Block
-        PExp4 pexp4Node2;
+        PExp3 pexp3Node2;
         TEgal tegalNode3;
-        PExp3 pexp3Node4;
-        pexp4Node2 = (PExp4)nodeArrayList1.get(0);
+        PExp4 pexp4Node4;
+        pexp3Node2 = (PExp3)nodeArrayList1.get(0);
         tegalNode3 = (TEgal)nodeArrayList2.get(0);
-        pexp3Node4 = (PExp3)nodeArrayList3.get(0);
+        pexp4Node4 = (PExp4)nodeArrayList3.get(0);
 
-        pexp3Node1 = new AEgalExp3(pexp4Node2, tegalNode3, pexp3Node4);
+        pexp3Node1 = new AEgalExp3(pexp3Node2, tegalNode3, pexp4Node4);
         }
 	nodeList.add(pexp3Node1);
         return nodeList;
@@ -764,14 +764,14 @@ public class Parser
         PExp3 pexp3Node1;
         {
             // Block
-        PExp4 pexp4Node2;
+        PExp3 pexp3Node2;
         TInferieur tinferieurNode3;
-        PExp3 pexp3Node4;
-        pexp4Node2 = (PExp4)nodeArrayList1.get(0);
+        PExp4 pexp4Node4;
+        pexp3Node2 = (PExp3)nodeArrayList1.get(0);
         tinferieurNode3 = (TInferieur)nodeArrayList2.get(0);
-        pexp3Node4 = (PExp3)nodeArrayList3.get(0);
+        pexp4Node4 = (PExp4)nodeArrayList3.get(0);
 
-        pexp3Node1 = new AInferieurExp3(pexp4Node2, tinferieurNode3, pexp3Node4);
+        pexp3Node1 = new AInferieurExp3(pexp3Node2, tinferieurNode3, pexp4Node4);
         }
 	nodeList.add(pexp3Node1);
         return nodeList;
@@ -810,14 +810,14 @@ public class Parser
         PExp4 pexp4Node1;
         {
             // Block
-        PExp5 pexp5Node2;
+        PExp4 pexp4Node2;
         TPlus tplusNode3;
-        PExp4 pexp4Node4;
-        pexp5Node2 = (PExp5)nodeArrayList1.get(0);
+        PExp5 pexp5Node4;
+        pexp4Node2 = (PExp4)nodeArrayList1.get(0);
         tplusNode3 = (TPlus)nodeArrayList2.get(0);
-        pexp4Node4 = (PExp4)nodeArrayList3.get(0);
+        pexp5Node4 = (PExp5)nodeArrayList3.get(0);
 
-        pexp4Node1 = new APlusExp4(pexp5Node2, tplusNode3, pexp4Node4);
+        pexp4Node1 = new APlusExp4(pexp4Node2, tplusNode3, pexp5Node4);
         }
 	nodeList.add(pexp4Node1);
         return nodeList;
@@ -836,14 +836,14 @@ public class Parser
         PExp4 pexp4Node1;
         {
             // Block
-        PExp5 pexp5Node2;
+        PExp4 pexp4Node2;
         TMoins tmoinsNode3;
-        PExp4 pexp4Node4;
-        pexp5Node2 = (PExp5)nodeArrayList1.get(0);
+        PExp5 pexp5Node4;
+        pexp4Node2 = (PExp4)nodeArrayList1.get(0);
         tmoinsNode3 = (TMoins)nodeArrayList2.get(0);
-        pexp4Node4 = (PExp4)nodeArrayList3.get(0);
+        pexp5Node4 = (PExp5)nodeArrayList3.get(0);
 
-        pexp4Node1 = new AMoinsExp4(pexp5Node2, tmoinsNode3, pexp4Node4);
+        pexp4Node1 = new AMoinsExp4(pexp4Node2, tmoinsNode3, pexp5Node4);
         }
 	nodeList.add(pexp4Node1);
         return nodeList;
@@ -882,14 +882,14 @@ public class Parser
         PExp5 pexp5Node1;
         {
             // Block
-        PExp6 pexp6Node2;
+        PExp5 pexp5Node2;
         TFois tfoisNode3;
-        PExp5 pexp5Node4;
-        pexp6Node2 = (PExp6)nodeArrayList1.get(0);
+        PExp6 pexp6Node4;
+        pexp5Node2 = (PExp5)nodeArrayList1.get(0);
         tfoisNode3 = (TFois)nodeArrayList2.get(0);
-        pexp5Node4 = (PExp5)nodeArrayList3.get(0);
+        pexp6Node4 = (PExp6)nodeArrayList3.get(0);
 
-        pexp5Node1 = new AFoisExp5(pexp6Node2, tfoisNode3, pexp5Node4);
+        pexp5Node1 = new AFoisExp5(pexp5Node2, tfoisNode3, pexp6Node4);
         }
 	nodeList.add(pexp5Node1);
         return nodeList;
@@ -908,14 +908,14 @@ public class Parser
         PExp5 pexp5Node1;
         {
             // Block
-        PExp6 pexp6Node2;
+        PExp5 pexp5Node2;
         TDiviser tdiviserNode3;
-        PExp5 pexp5Node4;
-        pexp6Node2 = (PExp6)nodeArrayList1.get(0);
+        PExp6 pexp6Node4;
+        pexp5Node2 = (PExp5)nodeArrayList1.get(0);
         tdiviserNode3 = (TDiviser)nodeArrayList2.get(0);
-        pexp5Node4 = (PExp5)nodeArrayList3.get(0);
+        pexp6Node4 = (PExp6)nodeArrayList3.get(0);
 
-        pexp5Node1 = new ADiviserExp5(pexp6Node2, tdiviserNode3, pexp5Node4);
+        pexp5Node1 = new ADiviserExp5(pexp5Node2, tdiviserNode3, pexp6Node4);
         }
 	nodeList.add(pexp5Node1);
         return nodeList;
@@ -954,11 +954,11 @@ public class Parser
         {
             // Block
         TNon tnonNode2;
-        PExp7 pexp7Node3;
+        PExp6 pexp6Node3;
         tnonNode2 = (TNon)nodeArrayList1.get(0);
-        pexp7Node3 = (PExp7)nodeArrayList2.get(0);
+        pexp6Node3 = (PExp6)nodeArrayList2.get(0);
 
-        pexp6Node1 = new ANonExp6(tnonNode2, pexp7Node3);
+        pexp6Node1 = new ANonExp6(tnonNode2, pexp6Node3);
         }
 	nodeList.add(pexp6Node1);
         return nodeList;
@@ -2013,20 +2013,20 @@ public class Parser
 			{{-1, REDUCE, 34}, },
 			{{-1, ERROR, 42}, {4, SHIFT, 64}, },
 			{{-1, ERROR, 43}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
-			{{-1, ERROR, 44}, {6, SHIFT, 43}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
+			{{-1, ERROR, 44}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, REDUCE, 18}, },
 			{{-1, ERROR, 46}, {6, SHIFT, 67}, },
 			{{-1, REDUCE, 19}, },
-			{{-1, ERROR, 48}, {22, SHIFT, 68}, },
-			{{-1, REDUCE, 4}, {17, SHIFT, 69}, },
-			{{-1, REDUCE, 6}, {16, SHIFT, 70}, },
-			{{-1, REDUCE, 9}, {12, SHIFT, 71}, {14, SHIFT, 72}, },
-			{{-1, REDUCE, 12}, {0, SHIFT, 73}, {1, SHIFT, 74}, },
-			{{-1, REDUCE, 15}, {2, SHIFT, 75}, {3, SHIFT, 76}, },
+			{{-1, ERROR, 48}, {17, SHIFT, 68}, {22, SHIFT, 69}, },
+			{{-1, REDUCE, 4}, {16, SHIFT, 70}, },
+			{{-1, REDUCE, 6}, {12, SHIFT, 71}, {14, SHIFT, 72}, },
+			{{-1, REDUCE, 9}, {0, SHIFT, 73}, {1, SHIFT, 74}, },
+			{{-1, REDUCE, 12}, {2, SHIFT, 75}, {3, SHIFT, 76}, },
+			{{-1, REDUCE, 15}, },
 			{{-1, REDUCE, 17}, },
 			{{-1, REDUCE, 21}, },
-			{{-1, ERROR, 56}, {23, SHIFT, 77}, },
-			{{-1, ERROR, 57}, {4, SHIFT, 78}, },
+			{{-1, ERROR, 56}, {17, SHIFT, 68}, {23, SHIFT, 77}, },
+			{{-1, ERROR, 57}, {4, SHIFT, 78}, {17, SHIFT, 68}, },
 			{{-1, ERROR, 58}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, ERROR, 59}, {6, SHIFT, 43}, {7, SHIFT, 80}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, ERROR, 60}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
@@ -2034,11 +2034,11 @@ public class Parser
 			{{-1, REDUCE, 35}, },
 			{{-1, REDUCE, 38}, },
 			{{-1, REDUCE, 43}, },
-			{{-1, ERROR, 65}, {7, SHIFT, 85}, },
+			{{-1, ERROR, 65}, {7, SHIFT, 85}, {17, SHIFT, 68}, },
 			{{-1, REDUCE, 16}, },
 			{{-1, ERROR, 67}, {7, SHIFT, 86}, },
-			{{-1, ERROR, 68}, {8, SHIFT, 23}, },
-			{{-1, ERROR, 69}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
+			{{-1, ERROR, 68}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
+			{{-1, ERROR, 69}, {8, SHIFT, 23}, },
 			{{-1, ERROR, 70}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, ERROR, 71}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, ERROR, 72}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
@@ -2048,21 +2048,21 @@ public class Parser
 			{{-1, ERROR, 76}, {6, SHIFT, 43}, {15, SHIFT, 44}, {18, SHIFT, 45}, {26, SHIFT, 46}, {28, SHIFT, 30}, },
 			{{-1, ERROR, 77}, {8, SHIFT, 23}, },
 			{{-1, REDUCE, 44}, },
-			{{-1, ERROR, 79}, {7, SHIFT, 97}, },
+			{{-1, ERROR, 79}, {7, SHIFT, 97}, {17, SHIFT, 68}, },
 			{{-1, REDUCE, 56}, },
-			{{-1, REDUCE, 24}, {5, SHIFT, 98}, },
+			{{-1, REDUCE, 24}, {5, SHIFT, 98}, {17, SHIFT, 68}, },
 			{{-1, ERROR, 82}, {7, SHIFT, 100}, },
-			{{-1, ERROR, 83}, {11, SHIFT, 101}, },
-			{{-1, ERROR, 84}, {4, SHIFT, 102}, },
+			{{-1, ERROR, 83}, {11, SHIFT, 101}, {17, SHIFT, 68}, },
+			{{-1, ERROR, 84}, {4, SHIFT, 102}, {17, SHIFT, 68}, },
 			{{-1, REDUCE, 20}, },
 			{{-1, REDUCE, 22}, },
+			{{-1, REDUCE, 3}, {16, SHIFT, 70}, },
 			{{-1, REDUCE, 40}, {20, SHIFT, 103}, },
-			{{-1, REDUCE, 3}, },
-			{{-1, REDUCE, 5}, },
-			{{-1, REDUCE, 8}, },
-			{{-1, REDUCE, 7}, },
-			{{-1, REDUCE, 10}, },
-			{{-1, REDUCE, 11}, },
+			{{-1, REDUCE, 5}, {12, SHIFT, 71}, {14, SHIFT, 72}, },
+			{{-1, REDUCE, 8}, {0, SHIFT, 73}, {1, SHIFT, 74}, },
+			{{-1, REDUCE, 7}, {0, SHIFT, 73}, {1, SHIFT, 74}, },
+			{{-1, REDUCE, 10}, {2, SHIFT, 75}, {3, SHIFT, 76}, },
+			{{-1, REDUCE, 11}, {2, SHIFT, 75}, {3, SHIFT, 76}, },
 			{{-1, REDUCE, 13}, },
 			{{-1, REDUCE, 14}, },
 			{{-1, REDUCE, 42}, },
@@ -2075,7 +2075,7 @@ public class Parser
 			{{-1, ERROR, 103}, {8, SHIFT, 23}, },
 			{{-1, REDUCE, 39}, },
 			{{-1, REDUCE, 45}, },
-			{{-1, REDUCE, 25}, {5, SHIFT, 98}, },
+			{{-1, REDUCE, 25}, {5, SHIFT, 98}, {17, SHIFT, 68}, },
 			{{-1, REDUCE, 41}, },
 			{{-1, REDUCE, 26}, },
         };*/
@@ -2083,19 +2083,19 @@ public class Parser
 /*      {
 			{{-1, 2}, },
 			{{-1, 47}, {23, 31}, {32, 31}, },
-			{{-1, 48}, {27, 56}, {28, 57}, {43, 65}, {58, 79}, {59, 81}, {60, 83}, {61, 84}, {69, 88}, {98, 106}, },
-			{{-1, 49}, {70, 89}, },
-			{{-1, 50}, {71, 90}, {72, 91}, },
-			{{-1, 51}, {73, 92}, {74, 93}, },
-			{{-1, 52}, {75, 94}, {76, 95}, },
-			{{-1, 53}, },
-			{{-1, 54}, {44, 66}, },
+			{{-1, 48}, {27, 56}, {28, 57}, {43, 65}, {58, 79}, {59, 81}, {60, 83}, {61, 84}, {98, 106}, },
+			{{-1, 49}, {68, 87}, },
+			{{-1, 50}, {70, 89}, },
+			{{-1, 51}, {71, 90}, {72, 91}, },
+			{{-1, 52}, {73, 92}, {74, 93}, },
+			{{-1, 53}, {44, 66}, {75, 94}, {76, 95}, },
+			{{-1, 54}, },
 			{{-1, 82}, },
 			{{-1, 99}, {106, 108}, },
 			{{-1, 32}, },
 			{{-1, 33}, {32, 62}, },
 			{{-1, 34}, },
-			{{-1, 35}, {22, 24}, {68, 87}, {77, 96}, {103, 107}, },
+			{{-1, 35}, {22, 24}, {69, 88}, {77, 96}, {103, 107}, },
 			{{-1, 36}, },
 			{{-1, 104}, },
 			{{-1, 37}, },
@@ -2135,23 +2135,23 @@ public class Parser
 			"expecting: '+', '-', '*', '/', ';', ',', '(', ')', '[', ']', '<', '=', '&', '|', 'alors', 'faire'",
 			"expecting: '='",
 			"expecting: '}'",
-			"expecting: '(', nombre, 'lire', identifiant",
 			"expecting: '+', '-', '*', '/', ';', ',', ')', ']', '<', '=', '&', '|', 'alors', 'faire'",
-			"expecting: 'alors'",
-			"expecting: ';', ',', ')', ']', '|', 'alors', 'faire'",
+			"expecting: '|', 'alors'",
 			"expecting: ';', ',', ')', ']', '&', '|', 'alors', 'faire'",
 			"expecting: ';', ',', ')', ']', '<', '=', '&', '|', 'alors', 'faire'",
 			"expecting: '+', '-', ';', ',', ')', ']', '<', '=', '&', '|', 'alors', 'faire'",
-			"expecting: 'faire'",
+			"expecting: '|', 'faire'",
+			"expecting: ';', '|'",
 			"expecting: '(', ')', '!', nombre, 'lire', identifiant",
 			"expecting: ';', '{', '}', 'si', 'sinon', 'tantque', 'retour', 'ecrire', identifiant, EOF",
-			"expecting: ',', ')'",
+			"expecting: ')', '|'",
+			"expecting: ',', ')', '|'",
+			"expecting: ']', '|'",
 			"expecting: ';', '{', '}', 'si', 'sinon', 'tantque', 'retour', 'ecrire', identifiant",
-			"expecting: ';', ',', ')', ']', 'alors', 'faire'",
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 2, 11, 3, 12, 2, 13, 8, 14, 3, 15, 16, 17, 5, 17, 18, 18, 18, 10, 19, 20, 17, 21, 17, 17, 17, 17, 17, 17, 17, 17, 4, 18, 22, 23, 10, 23, 24, 25, 26, 27, 28, 23, 23, 23, 29, 4, 18, 30, 18, 18, 21, 31, 17, 14, 23, 14, 16, 18, 18, 18, 18, 18, 18, 18, 18, 16, 17, 14, 23, 32, 14, 13, 4, 23, 23, 33, 34, 25, 26, 26, 27, 27, 28, 28, 17, 4, 18, 14, 23, 23, 17, 16, 17, 17, 32, 17, 14, 
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 2, 11, 3, 12, 2, 13, 8, 14, 3, 15, 16, 17, 5, 17, 18, 18, 18, 10, 19, 20, 17, 21, 17, 17, 17, 17, 17, 17, 17, 17, 4, 18, 18, 22, 10, 22, 23, 24, 25, 26, 22, 22, 22, 22, 27, 28, 18, 29, 18, 18, 21, 30, 17, 31, 22, 14, 18, 16, 18, 18, 18, 18, 18, 18, 18, 16, 17, 31, 22, 32, 14, 33, 28, 22, 22, 24, 34, 25, 26, 26, 22, 22, 22, 22, 17, 4, 18, 14, 22, 22, 17, 16, 17, 17, 32, 17, 14, 
         };*/
 
     static 

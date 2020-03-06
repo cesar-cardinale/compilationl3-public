@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class AEtExp2 extends PExp2
 {
-    private PExp3 _exp3_;
-    private TEt _et_;
     private PExp2 _exp2_;
+    private TEt _et_;
+    private PExp3 _exp3_;
 
     public AEtExp2()
     {
@@ -17,16 +17,16 @@ public final class AEtExp2 extends PExp2
     }
 
     public AEtExp2(
-        @SuppressWarnings("hiding") PExp3 _exp3_,
+        @SuppressWarnings("hiding") PExp2 _exp2_,
         @SuppressWarnings("hiding") TEt _et_,
-        @SuppressWarnings("hiding") PExp2 _exp2_)
+        @SuppressWarnings("hiding") PExp3 _exp3_)
     {
         // Constructor
-        setExp3(_exp3_);
+        setExp2(_exp2_);
 
         setEt(_et_);
 
-        setExp2(_exp2_);
+        setExp3(_exp3_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AEtExp2 extends PExp2
     public Object clone()
     {
         return new AEtExp2(
-            cloneNode(this._exp3_),
+            cloneNode(this._exp2_),
             cloneNode(this._et_),
-            cloneNode(this._exp2_));
+            cloneNode(this._exp3_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAEtExp2(this);
-    }
-
-    public PExp3 getExp3()
-    {
-        return this._exp3_;
-    }
-
-    public void setExp3(PExp3 node)
-    {
-        if(this._exp3_ != null)
-        {
-            this._exp3_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp3_ = node;
-    }
-
-    public TEt getEt()
-    {
-        return this._et_;
-    }
-
-    public void setEt(TEt node)
-    {
-        if(this._et_ != null)
-        {
-            this._et_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._et_ = node;
     }
 
     public PExp2 getExp2()
@@ -120,22 +70,72 @@ public final class AEtExp2 extends PExp2
         this._exp2_ = node;
     }
 
+    public TEt getEt()
+    {
+        return this._et_;
+    }
+
+    public void setEt(TEt node)
+    {
+        if(this._et_ != null)
+        {
+            this._et_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._et_ = node;
+    }
+
+    public PExp3 getExp3()
+    {
+        return this._exp3_;
+    }
+
+    public void setExp3(PExp3 node)
+    {
+        if(this._exp3_ != null)
+        {
+            this._exp3_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp3_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp3_)
+            + toString(this._exp2_)
             + toString(this._et_)
-            + toString(this._exp2_);
+            + toString(this._exp3_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp3_ == child)
+        if(this._exp2_ == child)
         {
-            this._exp3_ = null;
+            this._exp2_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AEtExp2 extends PExp2
             return;
         }
 
-        if(this._exp2_ == child)
+        if(this._exp3_ == child)
         {
-            this._exp2_ = null;
+            this._exp3_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AEtExp2 extends PExp2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp3_ == oldChild)
+        if(this._exp2_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setExp2((PExp2) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AEtExp2 extends PExp2
             return;
         }
 
-        if(this._exp2_ == oldChild)
+        if(this._exp3_ == oldChild)
         {
-            setExp2((PExp2) newChild);
+            setExp3((PExp3) newChild);
             return;
         }
 

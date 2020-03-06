@@ -42,10 +42,11 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAOuExpression(AOuExpression node) {
-        SaExp exp2 = (SaExp) apply(node.getExp2());
-        SaExp exp = (SaExp) apply(node.getExpression());
 
-        this.returnValue = new SaExpOr(exp2,exp);
+        SaExp exp = (SaExp) apply(node.getExpression());
+        SaExp exp2 = (SaExp) apply(node.getExp2());
+
+        this.returnValue = new SaExpOr(exp,exp2);
     }
 
     @Override
@@ -56,10 +57,11 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAEtExp2(AEtExp2 node) {
-        SaExp exp3 = (SaExp) apply(node.getExp3());
-        SaExp exp2 = (SaExp) apply(node.getExp2());
 
-        this.returnValue = new SaExpAnd(exp3,exp2);
+        SaExp exp2 = (SaExp) apply(node.getExp2());
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+
+        this.returnValue = new SaExpAnd(exp2,exp3);
     }
 
     @Override
@@ -70,18 +72,20 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAEgalExp3(AEgalExp3 node) {
-        SaExp exp4 = (SaExp) apply(node.getExp4());
-        SaExp exp3 = (SaExp) apply(node.getExp3());
 
-        this.returnValue = new SaExpEqual(exp4,exp3);
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+
+        this.returnValue = new SaExpEqual(exp3,exp4);
     }
 
     @Override
     public void caseAInferieurExp3(AInferieurExp3 node) {
-        SaExp exp4 = (SaExp) apply(node.getExp4());
-        SaExp exp3 = (SaExp) apply(node.getExp3());
 
-        this.returnValue = new SaExpInf(exp4,exp3);
+        SaExp exp3 = (SaExp) apply(node.getExp3());
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+
+        this.returnValue = new SaExpInf(exp3,exp4);
     }
 
     @Override
@@ -92,18 +96,20 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAPlusExp4(APlusExp4 node) {
-        SaExp exp5 = (SaExp) apply(node.getExp5());
-        SaExp exp4 = (SaExp) apply(node.getExp4());
 
-        this.returnValue = new SaExpAdd(exp5,exp4);
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+
+        this.returnValue = new SaExpAdd(exp4,exp5);
     }
 
     @Override
     public void caseAMoinsExp4(AMoinsExp4 node) {
-        SaExp exp5 = (SaExp) apply(node.getExp5());
-        SaExp exp4 = (SaExp) apply(node.getExp4());
 
-        this.returnValue = new SaExpSub(exp5,exp4);
+        SaExp exp4 = (SaExp) apply(node.getExp4());
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+
+        this.returnValue = new SaExpSub(exp4,exp5);
     }
 
     @Override
@@ -114,18 +120,20 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseAFoisExp5(AFoisExp5 node) {
-        SaExp exp6 = (SaExp) apply(node.getExp6());
-        SaExp exp5 = (SaExp) apply(node.getExp5());
 
-        this.returnValue = new SaExpMult(exp6,exp5);
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp6 = (SaExp) apply(node.getExp6());
+
+        this.returnValue = new SaExpMult(exp5,exp6);
     }
 
     @Override
     public void caseADiviserExp5(ADiviserExp5 node) {
-        SaExp exp6 = (SaExp) apply(node.getExp6());
-        SaExp exp5 = (SaExp) apply(node.getExp5());
 
-        this.returnValue = new SaExpDiv(exp6,exp5);
+        SaExp exp5 = (SaExp) apply(node.getExp5());
+        SaExp exp6 = (SaExp) apply(node.getExp6());
+
+        this.returnValue = new SaExpDiv(exp5,exp6);
     }
 
     @Override
@@ -136,7 +144,7 @@ public class Sc2sa extends DepthFirstAdapter {
 
     @Override
     public void caseANonExp6(ANonExp6 node) {
-        SaExp exp7 = (SaExp) apply(node.getExp7());
+        SaExp exp7 = (SaExp) apply(node.getExp6());
 
         this.returnValue = new SaExpNot(exp7);
     }

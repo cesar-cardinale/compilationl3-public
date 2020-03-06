@@ -8,7 +8,7 @@ import sc.analysis.*;
 public final class ANonExp6 extends PExp6
 {
     private TNon _non_;
-    private PExp7 _exp7_;
+    private PExp6 _exp6_;
 
     public ANonExp6()
     {
@@ -17,12 +17,12 @@ public final class ANonExp6 extends PExp6
 
     public ANonExp6(
         @SuppressWarnings("hiding") TNon _non_,
-        @SuppressWarnings("hiding") PExp7 _exp7_)
+        @SuppressWarnings("hiding") PExp6 _exp6_)
     {
         // Constructor
         setNon(_non_);
 
-        setExp7(_exp7_);
+        setExp6(_exp6_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ANonExp6 extends PExp6
     {
         return new ANonExp6(
             cloneNode(this._non_),
-            cloneNode(this._exp7_));
+            cloneNode(this._exp6_));
     }
 
     @Override
@@ -65,16 +65,16 @@ public final class ANonExp6 extends PExp6
         this._non_ = node;
     }
 
-    public PExp7 getExp7()
+    public PExp6 getExp6()
     {
-        return this._exp7_;
+        return this._exp6_;
     }
 
-    public void setExp7(PExp7 node)
+    public void setExp6(PExp6 node)
     {
-        if(this._exp7_ != null)
+        if(this._exp6_ != null)
         {
-            this._exp7_.parent(null);
+            this._exp6_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ANonExp6 extends PExp6
             node.parent(this);
         }
 
-        this._exp7_ = node;
+        this._exp6_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ANonExp6 extends PExp6
     {
         return ""
             + toString(this._non_)
-            + toString(this._exp7_);
+            + toString(this._exp6_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ANonExp6 extends PExp6
             return;
         }
 
-        if(this._exp7_ == child)
+        if(this._exp6_ == child)
         {
-            this._exp7_ = null;
+            this._exp6_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ANonExp6 extends PExp6
             return;
         }
 
-        if(this._exp7_ == oldChild)
+        if(this._exp6_ == oldChild)
         {
-            setExp7((PExp7) newChild);
+            setExp6((PExp6) newChild);
             return;
         }
 

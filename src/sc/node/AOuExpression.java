@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class AOuExpression extends PExpression
 {
-    private PExp2 _exp2_;
-    private TOu _ou_;
     private PExpression _expression_;
+    private TOu _ou_;
+    private PExp2 _exp2_;
 
     public AOuExpression()
     {
@@ -17,16 +17,16 @@ public final class AOuExpression extends PExpression
     }
 
     public AOuExpression(
-        @SuppressWarnings("hiding") PExp2 _exp2_,
+        @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TOu _ou_,
-        @SuppressWarnings("hiding") PExpression _expression_)
+        @SuppressWarnings("hiding") PExp2 _exp2_)
     {
         // Constructor
-        setExp2(_exp2_);
+        setExpression(_expression_);
 
         setOu(_ou_);
 
-        setExpression(_expression_);
+        setExp2(_exp2_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AOuExpression extends PExpression
     public Object clone()
     {
         return new AOuExpression(
-            cloneNode(this._exp2_),
+            cloneNode(this._expression_),
             cloneNode(this._ou_),
-            cloneNode(this._expression_));
+            cloneNode(this._exp2_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAOuExpression(this);
-    }
-
-    public PExp2 getExp2()
-    {
-        return this._exp2_;
-    }
-
-    public void setExp2(PExp2 node)
-    {
-        if(this._exp2_ != null)
-        {
-            this._exp2_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp2_ = node;
-    }
-
-    public TOu getOu()
-    {
-        return this._ou_;
-    }
-
-    public void setOu(TOu node)
-    {
-        if(this._ou_ != null)
-        {
-            this._ou_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ou_ = node;
     }
 
     public PExpression getExpression()
@@ -120,22 +70,72 @@ public final class AOuExpression extends PExpression
         this._expression_ = node;
     }
 
+    public TOu getOu()
+    {
+        return this._ou_;
+    }
+
+    public void setOu(TOu node)
+    {
+        if(this._ou_ != null)
+        {
+            this._ou_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._ou_ = node;
+    }
+
+    public PExp2 getExp2()
+    {
+        return this._exp2_;
+    }
+
+    public void setExp2(PExp2 node)
+    {
+        if(this._exp2_ != null)
+        {
+            this._exp2_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp2_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp2_)
+            + toString(this._expression_)
             + toString(this._ou_)
-            + toString(this._expression_);
+            + toString(this._exp2_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp2_ == child)
+        if(this._expression_ == child)
         {
-            this._exp2_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AOuExpression extends PExpression
             return;
         }
 
-        if(this._expression_ == child)
+        if(this._exp2_ == child)
         {
-            this._expression_ = null;
+            this._exp2_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AOuExpression extends PExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp2_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setExp2((PExp2) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AOuExpression extends PExpression
             return;
         }
 
-        if(this._expression_ == oldChild)
+        if(this._exp2_ == oldChild)
         {
-            setExpression((PExpression) newChild);
+            setExp2((PExp2) newChild);
             return;
         }
 

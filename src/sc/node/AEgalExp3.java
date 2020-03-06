@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class AEgalExp3 extends PExp3
 {
-    private PExp4 _exp4_;
-    private TEgal _egal_;
     private PExp3 _exp3_;
+    private TEgal _egal_;
+    private PExp4 _exp4_;
 
     public AEgalExp3()
     {
@@ -17,16 +17,16 @@ public final class AEgalExp3 extends PExp3
     }
 
     public AEgalExp3(
-        @SuppressWarnings("hiding") PExp4 _exp4_,
+        @SuppressWarnings("hiding") PExp3 _exp3_,
         @SuppressWarnings("hiding") TEgal _egal_,
-        @SuppressWarnings("hiding") PExp3 _exp3_)
+        @SuppressWarnings("hiding") PExp4 _exp4_)
     {
         // Constructor
-        setExp4(_exp4_);
+        setExp3(_exp3_);
 
         setEgal(_egal_);
 
-        setExp3(_exp3_);
+        setExp4(_exp4_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AEgalExp3 extends PExp3
     public Object clone()
     {
         return new AEgalExp3(
-            cloneNode(this._exp4_),
+            cloneNode(this._exp3_),
             cloneNode(this._egal_),
-            cloneNode(this._exp3_));
+            cloneNode(this._exp4_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAEgalExp3(this);
-    }
-
-    public PExp4 getExp4()
-    {
-        return this._exp4_;
-    }
-
-    public void setExp4(PExp4 node)
-    {
-        if(this._exp4_ != null)
-        {
-            this._exp4_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp4_ = node;
-    }
-
-    public TEgal getEgal()
-    {
-        return this._egal_;
-    }
-
-    public void setEgal(TEgal node)
-    {
-        if(this._egal_ != null)
-        {
-            this._egal_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._egal_ = node;
     }
 
     public PExp3 getExp3()
@@ -120,22 +70,72 @@ public final class AEgalExp3 extends PExp3
         this._exp3_ = node;
     }
 
+    public TEgal getEgal()
+    {
+        return this._egal_;
+    }
+
+    public void setEgal(TEgal node)
+    {
+        if(this._egal_ != null)
+        {
+            this._egal_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._egal_ = node;
+    }
+
+    public PExp4 getExp4()
+    {
+        return this._exp4_;
+    }
+
+    public void setExp4(PExp4 node)
+    {
+        if(this._exp4_ != null)
+        {
+            this._exp4_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp4_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp4_)
+            + toString(this._exp3_)
             + toString(this._egal_)
-            + toString(this._exp3_);
+            + toString(this._exp4_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp4_ == child)
+        if(this._exp3_ == child)
         {
-            this._exp4_ = null;
+            this._exp3_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AEgalExp3 extends PExp3
             return;
         }
 
-        if(this._exp3_ == child)
+        if(this._exp4_ == child)
         {
-            this._exp3_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AEgalExp3 extends PExp3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp4_ == oldChild)
+        if(this._exp3_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExp3((PExp3) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AEgalExp3 extends PExp3
             return;
         }
 
-        if(this._exp3_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 

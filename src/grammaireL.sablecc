@@ -57,12 +57,12 @@ programme = {programme} listedecvaropt listedecfonc;
 var = {liste_var} identifiant crochet_ouvrant expression crochet_fermant | {var} identifiant;
 
 // Expression
-expression = {ou} exp2 ou expression | {exp2} exp2;
-exp2 = {et} exp3 et exp2 | {exp3} exp3;
-exp3 = {egal} exp4 egal exp3 | {inferieur} exp4 inferieur exp3 | {exp4} exp4;
-exp4 = {plus} exp5 plus exp4 | {moins} exp5 moins exp4 | {exp5} exp5;
-exp5 = {fois} exp6 fois exp5 | {diviser} exp6 diviser exp5 | {exp6} exp6;
-exp6 = {non} non exp7 | {exp7} exp7;
+expression = {ou} expression ou exp2 | {exp2} exp2;
+exp2 = {et} exp2 et exp3 | {exp3} exp3;
+exp3 = {egal} exp3 egal exp4 | {inferieur} exp3 inferieur exp4 | {exp4} exp4;
+exp4 = {plus} exp4 plus exp5 | {moins} exp4 moins exp5 | {exp5} exp5;
+exp5 = {fois} exp5 fois exp6 | {diviser} exp5 diviser exp6 | {exp6} exp6;
+exp6 = {non} non exp6 | {exp7} exp7;
 exp7 = {nombre} nombre | {var} var | {parantheses} paranthese_ouvrante expression paranthese_fermante | {appelfonction} appelfonction | {lire} lire paranthese_ouvrante paranthese_fermante;
 
 liste_exp = {recursif} expression liste_exp_bis | {final} expression;

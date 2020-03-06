@@ -7,9 +7,9 @@ import sc.analysis.*;
 @SuppressWarnings("nls")
 public final class AInferieurExp3 extends PExp3
 {
-    private PExp4 _exp4_;
-    private TInferieur _inferieur_;
     private PExp3 _exp3_;
+    private TInferieur _inferieur_;
+    private PExp4 _exp4_;
 
     public AInferieurExp3()
     {
@@ -17,16 +17,16 @@ public final class AInferieurExp3 extends PExp3
     }
 
     public AInferieurExp3(
-        @SuppressWarnings("hiding") PExp4 _exp4_,
+        @SuppressWarnings("hiding") PExp3 _exp3_,
         @SuppressWarnings("hiding") TInferieur _inferieur_,
-        @SuppressWarnings("hiding") PExp3 _exp3_)
+        @SuppressWarnings("hiding") PExp4 _exp4_)
     {
         // Constructor
-        setExp4(_exp4_);
+        setExp3(_exp3_);
 
         setInferieur(_inferieur_);
 
-        setExp3(_exp3_);
+        setExp4(_exp4_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AInferieurExp3 extends PExp3
     public Object clone()
     {
         return new AInferieurExp3(
-            cloneNode(this._exp4_),
+            cloneNode(this._exp3_),
             cloneNode(this._inferieur_),
-            cloneNode(this._exp3_));
+            cloneNode(this._exp4_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAInferieurExp3(this);
-    }
-
-    public PExp4 getExp4()
-    {
-        return this._exp4_;
-    }
-
-    public void setExp4(PExp4 node)
-    {
-        if(this._exp4_ != null)
-        {
-            this._exp4_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp4_ = node;
-    }
-
-    public TInferieur getInferieur()
-    {
-        return this._inferieur_;
-    }
-
-    public void setInferieur(TInferieur node)
-    {
-        if(this._inferieur_ != null)
-        {
-            this._inferieur_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._inferieur_ = node;
     }
 
     public PExp3 getExp3()
@@ -120,22 +70,72 @@ public final class AInferieurExp3 extends PExp3
         this._exp3_ = node;
     }
 
+    public TInferieur getInferieur()
+    {
+        return this._inferieur_;
+    }
+
+    public void setInferieur(TInferieur node)
+    {
+        if(this._inferieur_ != null)
+        {
+            this._inferieur_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._inferieur_ = node;
+    }
+
+    public PExp4 getExp4()
+    {
+        return this._exp4_;
+    }
+
+    public void setExp4(PExp4 node)
+    {
+        if(this._exp4_ != null)
+        {
+            this._exp4_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp4_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp4_)
+            + toString(this._exp3_)
             + toString(this._inferieur_)
-            + toString(this._exp3_);
+            + toString(this._exp4_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp4_ == child)
+        if(this._exp3_ == child)
         {
-            this._exp4_ = null;
+            this._exp3_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AInferieurExp3 extends PExp3
             return;
         }
 
-        if(this._exp3_ == child)
+        if(this._exp4_ == child)
         {
-            this._exp3_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AInferieurExp3 extends PExp3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp4_ == oldChild)
+        if(this._exp3_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExp3((PExp3) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AInferieurExp3 extends PExp3
             return;
         }
 
-        if(this._exp3_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 
