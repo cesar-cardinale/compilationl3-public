@@ -2,6 +2,7 @@ package ts;
 import java.io.*;
 import java.util.*;
 import sa.*;
+import ts.Ts;
 
 public class Ts
 {

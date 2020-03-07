@@ -6,6 +6,7 @@ import sc.node.*;
 import sc.parser.*;
 import ts.Ts;
 
+
 import java.io.*;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class Compiler
 			e.printStackTrace();
 		}
 		try {
+			System.out.println(baseName);
 			// Create a Parser instance.
 			Parser p = new Parser(new Lexer(br));
 			// Parse the input.
