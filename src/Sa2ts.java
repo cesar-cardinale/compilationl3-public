@@ -96,11 +96,12 @@ public class Sa2ts extends SaDepthFirstVisitor {
         defaultIn(node);
         System.out.println("DecVar");
 
+
         if (!varExist(node.getNom())){
             if (node.tsItem == null)
-                tableGlobale.addVar(node.getNom(), tableGlobale.getAdrVarCourante()+1);
+                tableGlobale.addVar(node.getNom(), 1);
             else
-                tableGlobale.addVar(node.getNom(), tableGlobale.getAdrVarCourante() + node.tsItem.getTaille());
+                tableGlobale.addVar(node.getNom(), node.tsItem.getTaille());
         } else {
             System.out.println("Var "+ node.getNom() + " existe déjà");
         }
@@ -132,7 +133,13 @@ public class Sa2ts extends SaDepthFirstVisitor {
         if (tableGlobale.getFct(node.getNom()) == null) {
             System.out.println("Le tab n'existe pas!");
         }
-        if (node.getArguments().length() != tableGlobale.getFct(node.getNom()).getNbArgs()) {
+        int nbArg;
+        if (node.getArguments() == null) {
+            nbArg = 0;
+        } else {
+            nbArg = node.getArguments().length();
+        }
+        if (nbArg != tableGlobale.getFct(node.getNom()).getNbArgs()) {
             System.out.println("Le nombre d'argument n'est pas bon!");
         }
 
