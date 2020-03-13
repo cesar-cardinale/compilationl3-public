@@ -222,11 +222,13 @@ public class Sa2c3a extends SaDepthFirstVisitor<C3aOperand> {
         C3aOperand c3aOperand1 = node.getOp2().accept(this);
 
         //Premier IF
-        C3aInstJumpIfEqual c3aInstJumpIfEqual = new C3aInstJumpIfEqual(c3aOperand,new C3aConstant(0), c3aLabel, "");
+        C3aInstJumpIfEqual c3aInstJumpIfEqual = new C3aInstJumpIfEqual(c3aOperand,new C3aConstant(0),
+                c3aLabel, "");
         c3a.ajouteInst(c3aInstJumpIfEqual);
 
         // Deuxieme If
-        C3aInstJumpIfEqual c3aInstJumpIfEqual2 = new C3aInstJumpIfEqual(c3aOperand1,new C3aConstant(0), c3aLabel, "");
+        C3aInstJumpIfEqual c3aInstJumpIfEqual2 = new C3aInstJumpIfEqual(c3aOperand1,new C3aConstant(0),
+                c3aLabel, "");
         c3a.ajouteInst(c3aInstJumpIfEqual2);
 
         // Affectation temporaire
