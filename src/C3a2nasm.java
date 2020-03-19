@@ -13,7 +13,7 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
         this.nasm = new Nasm(ts);
         this.c3a = c3a;
         this.table = ts;
-        c3a.listeInst.get(0).accept(this);
+        this.c3a.listeInst.get(0).accept(this);
     }
 
     public Nasm getNasm() {
@@ -33,6 +33,26 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInstCall inst) {
+        NasmRegister nasmRegister = new NasmRegister(0);
+        nasmRegister.colorRegister(-1);
+
+        NasmConstant nasmConstant = new NasmConstant(4);
+
+        NasmSub nasmSub = new NasmSub(null, nasmRegister, nasmConstant, "allocation mémoire pour la valeur de retour");
+        nasm.ajouteInst(nasmSub);
+
+        NasmOperand nasmOperand = inst.op1.accept(this);
+        NasmCall nasmCall = new NasmCall(null, nasmOperand, "");
+        nasm.ajouteInst(nasmCall);
+
+        if (inst.result != null) {
+            NasmOperand nasmOperand1 = inst.result.accept(this);
+            NasmPop nasmPop = new NasmPop(null,nasmOperand1 , "récupération de la valeur de retour");
+            nasm.ajouteInst(nasmPop);
+        }
+        NasmConstant nasmConstant1 = new NasmConstant(inst.op1.val.nbArgs*4);
+        NasmAdd nasmAdd = new NasmAdd(null, nasmRegister, nasmConstant1, "désallocation des arguments");
+        nasm.ajouteInst(nasmAdd);
         return null;
     }
 
@@ -64,6 +84,7 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInst inst) {
+        /* Jamais utilisé */
         return null;
     }
 
@@ -96,7 +117,7 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInstRead inst) {
-        NasmRegister nasmRegister = new NasmRegister(0);
+        /* Jamais utilisé */
         return null;
     }
 
@@ -123,6 +144,16 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInstDiv inst) {
+        //Pas sur
+
+        NasmOperand label = (inst.label != null) ? inst.label.accept(this) : null;
+        NasmOperand oper1 = inst.op1.accept(this);
+        NasmOperand oper2 = inst.op2.accept(this);
+
+        NasmOperand dest = inst.result.accept(this);
+        nasm.ajouteInst(new NasmMov(label, dest, oper1, ""));
+        nasm.ajouteInst(new NasmMov(label, dest, oper2, ""));
+        nasm.ajouteInst(new NasmDiv(null, oper2, ""));
         return null;
     }
 
@@ -174,6 +205,9 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInstParam inst) {
+        NasmOperand nasmOperand = inst.op1.accept(this);
+        NasmPush nasmPush = new NasmPush(null, nasmOperand,"Param");
+        nasm.ajouteInst(nasmPush);
         return null;
     }
 
@@ -184,6 +218,16 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aInstWrite inst) {
+        NasmRegister nasmRegister = nasm.newRegister();
+        NasmOperand nasmOperand = inst.op1.accept(this);
+
+        NasmMov nasmMov = new NasmMov(null, nasmRegister, nasmOperand, "Write 1");
+        nasm.ajouteInst(nasmMov);
+
+        NasmLabel nasmLabel = new NasmLabel("iprintLF");
+        NasmCall nasmCall = new NasmCall(null, nasmLabel, "Write 2");
+
+        nasm.ajouteInst(nasmCall);
         return null;
     }
 
@@ -204,11 +248,11 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
 
     @Override
     public NasmOperand visit(C3aVar oper) {
-        return null;
+        return oper.index.accept(this);
     }
 
     @Override
     public NasmOperand visit(C3aFunction oper) {
-        return null;
+        return new NasmLabel(oper.val.identif);
     }
 }
