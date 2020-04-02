@@ -48,6 +48,7 @@ public class Nasm{
     }
 
     public NasmRegister newRegister(){
+		System.out.println("Register");
 	return new NasmRegister(tempCounter++);
     }
 
