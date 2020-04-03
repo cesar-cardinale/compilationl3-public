@@ -20,55 +20,178 @@ public class Fg implements NasmVisitor <Void> {
     }
 
     public void affiche(String baseFileName){
-	String fileName;
-	PrintStream out = System.out;
+        String fileName;
+        PrintStream out = System.out;
 
-	if (baseFileName != null){
-	    try {
-		baseFileName = baseFileName;
-		fileName = baseFileName + ".fg";
-		out = new PrintStream(fileName);
-	    }
-	    
-	    catch (IOException e) {
-		System.err.println("Error: " + e.getMessage());
-	    }
-	}
-	
-	for(NasmInst nasmInst : nasm.listeInst){
-	    Node n = this.inst2Node.get(nasmInst);
-	    out.print(n + " : ( ");
-	    for(NodeList q=n.succ(); q!=null; q=q.tail) {
-		out.print(q.head.toString());
-		out.print(" ");
-	    }
-	    out.println(")\t" + nasmInst);
-	}
+        if (baseFileName != null){
+            try {
+            baseFileName = baseFileName;
+            fileName = baseFileName + ".fg";
+            out = new PrintStream(fileName);
+            }
+
+            catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            }
+        }
+        System.out.println("debut");
+
+        for (NasmInst nasmInst : nasm.listeInst) {
+            creatNode(nasmInst);
+        }
+
+        for (NasmInst nasmInst : nasm.listeInst) {
+            nasmInst.accept(this);
+        }
+
+        for(NasmInst nasmInst : nasm.listeInst){
+            Node n = this.inst2Node.get(nasmInst);
+            out.print(n + " : ( ");
+            for(NodeList q=n.succ(); q!=null; q=q.tail) {
+                out.print(q.head.toString());
+                out.print(" ");
+            }
+            out.println(")\t" + nasmInst);
+        }
+    }
+
+    void creatNode(NasmInst inst) {
+        System.out.println("Creation node");
+        System.out.println(inst);
+        Node node = graph.newNode();
+        inst2Node.put(inst, node);
+        node2Inst.put(node, inst);
+        if (inst.label != null) {
+            label2Inst.put(inst.label.toString(),inst);
+        }
+    }
+
+    void creatArcSuiv(NasmInst inst) {
+
+        Node nodeFrom = inst2Node.get(inst);
+        int numNodeFrom = nodeFrom.label();
+
+        if (numNodeFrom == graph.nodeCount()-1) return;
+
+        Node nodeTo = null;
+        for (Node node : inst2Node.values()) {
+            if (node.label() == numNodeFrom+1) {
+                nodeTo = node;
+            }
+        }
+        graph.addEdge(nodeFrom, nodeTo);
+    }
+
+    void createArcWithLabel(NasmInst inst) {
+        Node nodeTo = null;
+        for (String str : label2Inst.keySet()) {
+            if (inst.address.toString().equals(str)) {
+                nodeTo = inst2Node.get(label2Inst.get(str));
+            }
+        }
+        graph.addEdge(inst2Node.get(inst), nodeTo);
     }
     
-    public Void visit(NasmAdd inst){return null;}
-    public Void visit(NasmCall inst){return null;}
-    public Void visit(NasmDiv inst){return null;}
-    public Void visit(NasmJe inst){return null;}
-    public Void visit(NasmJle inst){return null;}
-    public Void visit(NasmJne inst){return null;}
-    public Void visit(NasmMul inst){return null;}
-    public Void visit(NasmOr inst){return null;}
-    public Void visit(NasmCmp inst){return null;}
-    public Void visit(NasmInst inst){return null;}
-    public Void visit(NasmJge inst){return null;}
-    public Void visit(NasmJl inst){return null;}
-    public Void visit(NasmNot inst){return null;}
-    public Void visit(NasmPop inst){return null;}
-    public Void visit(NasmRet inst){return null;}
-    public Void visit(NasmXor inst){return null;}
-    public Void visit(NasmAnd inst){return null;}
-    public Void visit(NasmJg inst){return null;}
-    public Void visit(NasmJmp inst){return null;}
-    public Void visit(NasmMov inst){return null;}
-    public Void visit(NasmPush inst){return null;}
-    public Void visit(NasmSub inst){return null;}
-    public Void visit(NasmEmpty inst){return null;}
+    public Void visit(NasmAdd inst){
+        System.out.println("Add");
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmCall inst){
+        if (inst.address.toString().equals("iprintLF")) return null;
+        createArcWithLabel(inst);
+        return null;
+    }
+    public Void visit(NasmDiv inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJe inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJle inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJne inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmMul inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmOr inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmCmp inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmInst inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJge inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJl inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmNot inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmPop inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmRet inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmXor inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmAnd inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJg inst){
+        createArcWithLabel(inst);
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmJmp inst){
+        createArcWithLabel(inst);
+        return null;
+    }
+    public Void visit(NasmMov inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmPush inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmSub inst){
+        creatArcSuiv(inst);
+        return null;
+    }
+    public Void visit(NasmEmpty inst){
+        creatArcSuiv(inst);
+        return null;
+    }
 
     public Void visit(NasmAddress operand){return null;}
     public Void visit(NasmConstant operand){return null;}

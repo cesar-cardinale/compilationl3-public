@@ -1,3 +1,4 @@
+
 import sc.parser.*;
 import sc.lexer.*;
 import sc.node.*;
@@ -6,7 +7,7 @@ import sa.*;
 import ts.*;
 import c3a.*;
 import nasm.*;
-//import fg.*;
+import fg.*;
 
 public class Compiler
 {
@@ -66,12 +67,11 @@ public class Compiler
 	    //nasm.affichePreambule(new PrintStream(baseName));
 	    nasm.affichePre(baseName);
 
-      /*
 	    System.out.print("[BUILD FG] ");
 	    Fg fg = new Fg(nasm);
 	    System.out.print("[PRINT FG] ");
 	    fg.affiche(baseName);
-
+/*
 	    System.out.println("[SOLVE FG]");
 	    FgSolution fgSolution = new FgSolution(nasm, fg);
 	    fgSolution.affiche(baseName);
