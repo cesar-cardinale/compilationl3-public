@@ -20,6 +20,7 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
         for (int i=0; this.c3a.listeInst.size() > i; i++) {
             this.c3a.listeInst.get(i).accept(this);
         }
+        System.out.println(nasm.getTempCounter());
     }
 
     public Nasm getNasm() {
@@ -212,7 +213,10 @@ public class C3a2nasm implements C3aVisitor <NasmOperand> {
         nasm.ajouteInst(new NasmMov(null, nasmRegister1, oper2, ""));
         nasm.ajouteInst(new NasmDiv(null, nasmRegister1, ""));
 
-        nasm.ajouteInst(new NasmMov(null, dest, nasmRegister, ""));
+        NasmRegister nasmRegister2 = nasm.newRegister();
+        nasmRegister2.colorRegister(Nasm.REG_EAX);
+
+        nasm.ajouteInst(new NasmMov(null, dest, nasmRegister2, ""));
 
         return null;
     }

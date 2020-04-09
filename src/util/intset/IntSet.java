@@ -84,8 +84,8 @@ public class IntSet{
 	String s = "(";
 	for (int i = 0; i < size; i++)
 	    if(array[i] == true){
-		s += i;
-		s += " ";
+			s += i;
+			s += " ";
 	    }
 	s+= ")";
 	return s;
