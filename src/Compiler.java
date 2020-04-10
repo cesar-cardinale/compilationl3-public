@@ -89,11 +89,11 @@ public class Compiler
 		System.out.print("[PRINT IG] ");
 		ig.affiche(baseName);
 
-		System.out.println("[ALLOCATE REGISTERS]");
-		ig.allocateRegisters();
+		//System.out.println("[ALLOCATE REGISTERS]");
+		//ig.allocateRegisters();
 
-		System.out.println("[PRINT NASM]");
-		nasm.affiche(baseName);
+		//System.out.println("[PRINT NASM]");
+		//nasm.affiche(baseName);
 	}
 	catch(Exception e){
 	    System.out.println(e.getMessage());
