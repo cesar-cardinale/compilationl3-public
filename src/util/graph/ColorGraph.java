@@ -22,16 +22,16 @@ public class ColorGraph {
 	pile         = new Stack<Integer>(); 
 	R            = G.nodeCount();
 	couleur      = new int[R];
-	//removed      = new IntSet(R);
-	//spill        = new IntSet(R);
+	enleves      = new IntSet(R);
+	deborde        = new IntSet(R);
 	int2Node     = G.nodeArray();
 	for(int v=0; v < R; v++){
 	    int preColor = phi[v];
 	    if(preColor >= 0 && preColor < K)
-		couleur[v] = phi[v];
+		    couleur[v] = phi[v];
 	    else
-		couleur[v] = NOCOLOR;
-	}
+		    couleur[v] = NOCOLOR;
+	    }
     }
 
     /*-------------------------------------------------------------------------------------------------------------*/

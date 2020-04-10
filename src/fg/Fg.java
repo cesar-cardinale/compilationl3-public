@@ -34,7 +34,6 @@ public class Fg implements NasmVisitor <Void> {
             System.err.println("Error: " + e.getMessage());
             }
         }
-        System.out.println("debut");
 
         for (NasmInst nasmInst : nasm.listeInst) {
             creatNode(nasmInst);
@@ -56,8 +55,6 @@ public class Fg implements NasmVisitor <Void> {
     }
 
     void creatNode(NasmInst inst) {
-        System.out.println("Creation node");
-        System.out.println(inst);
         Node node = graph.newNode();
         inst2Node.put(inst, node);
         node2Inst.put(node, inst);
@@ -93,7 +90,6 @@ public class Fg implements NasmVisitor <Void> {
     }
     
     public Void visit(NasmAdd inst){
-        System.out.println("Add");
         creatArcSuiv(inst);
         return null;
     }

@@ -26,18 +26,17 @@ public class Sa2ts extends SaDepthFirstVisitor {
 
     @Override
     public void defaultIn(SaNode node) {
-        System.out.println("debut Passage"+node.getClass());
+        //System.out.println("debut Passage"+node.getClass());
     }
 
     @Override
     public void defaultOut(SaNode node) {
-        System.out.println("fin Passage"+node.getClass());
+        //System.out.println("fin Passage"+node.getClass());
     }
 
     @Override
     public Object visit(SaDecTab node) {
         defaultIn(node);
-        System.out.println("DecTab");
         if (tableGlobale.getVar(node.getNom()) == null){
                 tableGlobale.addVar(node.getNom(), tableGlobale.getAdrVarCourante()+node.getTaille());
         } else {
@@ -52,7 +51,6 @@ public class Sa2ts extends SaDepthFirstVisitor {
     @Override
     public Object visit(SaDecFonc node) {
         defaultIn(node);
-        System.out.println("DecFonc");
 
         this.tableLocal = new Ts();
 
@@ -94,7 +92,6 @@ public class Sa2ts extends SaDepthFirstVisitor {
     @Override
     public Object visit(SaDecVar node) {
         defaultIn(node);
-        System.out.println("DecVar");
 
 
         if (!varExist(node.getNom())){
@@ -114,7 +111,6 @@ public class Sa2ts extends SaDepthFirstVisitor {
     @Override
     public Object visit(SaVarSimple node) {
         defaultIn(node);
-        System.out.println("VarSimple");
 
         if (!varExist(node.getNom())) {
             System.out.println("La var n'existe pas");
@@ -128,7 +124,6 @@ public class Sa2ts extends SaDepthFirstVisitor {
     @Override
     public Object visit(SaAppel node) {
         defaultIn(node);
-        System.out.println("Appel");
 
         if (tableGlobale.getFct(node.getNom()) == null) {
             System.out.println("Le tab n'existe pas!");
@@ -151,7 +146,6 @@ public class Sa2ts extends SaDepthFirstVisitor {
     @Override
     public Object visit(SaVarIndicee node) {
         defaultIn(node);
-        System.out.println("VarIndicee");
 
         if (tableGlobale.getVar(node.getNom()) == null) {
             System.out.println("Le tab n'existe pas");

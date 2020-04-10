@@ -56,7 +56,6 @@ public class FgSolution implements NasmVisitor <Void>{
 		use.put(inst,new IntSet(fg.inst2Node.size()));
 		if (inst.source instanceof NasmRegister  && inst.source.isGeneralRegister()) {
 			NasmRegister source = (NasmRegister) inst.source;
-			System.out.println("Source : "+inst + " -> " + source.val);
 			if (inst.srcUse) {
 				use.get(inst).add(source.val);
 			}
@@ -66,7 +65,6 @@ public class FgSolution implements NasmVisitor <Void>{
 		}
 		if (inst.destination instanceof NasmRegister  && inst.destination.isGeneralRegister()) {
 			NasmRegister dest = (NasmRegister) inst.destination;
-			System.out.println("Dest : "+ inst + " -> "+dest.val);
 			if (inst.destUse) {
 				use.get(inst).add(dest.val);
 			}
@@ -80,7 +78,6 @@ public class FgSolution implements NasmVisitor <Void>{
 	}
 
 	void algoInOut() {
-		System.out.println("Algo In Out");
 		while (true) {
 			Map< NasmInst, IntSet> inBis = new HashMap< NasmInst, IntSet>();
 			Map< NasmInst, IntSet> outBis = new HashMap< NasmInst, IntSet>();
@@ -162,10 +159,7 @@ public class FgSolution implements NasmVisitor <Void>{
 
 	@Override
 	public Void visit(NasmJne inst) {
-		def.put(inst,new IntSet(fg.inst2Node.size()));
-		use.put(inst,new IntSet(fg.inst2Node.size()));
-		in.put(inst,new IntSet(fg.inst2Node.size()));
-		out.put(inst,new IntSet(fg.inst2Node.size()));
+		passageInst(inst);
 		return null;
 	}
 
